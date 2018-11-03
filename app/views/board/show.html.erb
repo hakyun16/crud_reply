@@ -1,0 +1,9 @@
+<h1>Board#show</h1>
+<p>Find me in app/views/board/show.html.erb</p>
+<%=@content.title%><br>
+<%=@content.editor%><br>
+<%=@content.content%><br>
+<a href="/board/edit/<%=@content.id%>">[수정]</a>
+<a href="/board/delete/<%=@content.id%>">[삭제]</a>
+<br>
+<a href ="/board/index">[목록]</a>
