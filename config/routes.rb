@@ -1,20 +1,14 @@
 Rails.application.routes.draw do
   root 'board#index'
- 
+  
   get 'board/index'
-
-  get 'board/show'
 
   get 'board/new'
 
   post 'board/create'
 
-  get 'board/edit'
-
   post 'board/update/:id' => 'board#update'
 
-  get 'board/delete'
-  
   get 'board/show/:id' => 'board#show'
   
   get 'board/edit/:id' => 'board#edit'
