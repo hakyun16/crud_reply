@@ -32,7 +32,7 @@ class BoardController < ApplicationController
 
   def update
     content = Board.find(params[:id])
-    content.title = params[:title]
+    content.title = params[:haha]
     content.editor = params[:editor]
     content.content = params[:content]
     

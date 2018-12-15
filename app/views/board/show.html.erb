@@ -1,9 +1,39 @@
 <h1>Board#show</h1>
 <p>Find me in app/views/board/show.html.erb</p>
-<%=@content.title%><br>
-<%=@content.editor%><br>
-<%=@content.content%><br>
-<a href="/board/edit/<%=@content.id%>">[수정]</a>
-<a href="/board/delete/<%=@content.id%>">[삭제]</a>
-<br>
-<a href ="/board/index">[목록]</a>
+
+<div class="container">
+    <%=@content.title%><br>
+    <%=@content.editor%><br>
+    <%=@content.content%><br>
+    <a href="/board/edit/<%=@content.id%>">[수정]</a>
+    <a href="/board/delete/<%=@content.id%>">[삭제]</a>
+    <br>
+    <a href ="/board/index">[목록]</a>
+</div>
+
+<form action ="/comment/reply_create" method= "post">
+    <div class ="container">
+       <div class="form-group">
+            <input type="hidden" name="board_id" value="<%=@content.id%>" class="form-control" id="InputLectureID" placeholder="담당교수를 입력하세요">
+       </div>
+       <div class="form-group">
+            <label for="exampleInputEmail1">작성자</label>
+            <input type="text" class="form-control" name = "reply_editor" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="작성자 이름을 입력하세요">
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">내용</label>
+            <textarea class="form-control" name = "reply_content" id="exampleFormControlTextarea1" placeholder="내용을 입력하세요" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">완료</button>
+    </div>
+</form>
+
+<div class="container">
+    댓글 모음
+    <br><hr>
+    <% @content.replies.each do |reply|%>
+        댓글 작성자 : <%= reply.editor%>
+        댓글 내용 : <%= reply.content %>
+        <a href="/comment/reply_delete/<%= reply.id%>">delete</a><br>
+    <%end%>
+</div>
